@@ -63,4 +63,13 @@ abstract class User
     {
         return !$this->card->isExpired();
     }
+    
+    /**
+     *
+     * @return Cart
+     */
+    public function getCart(): Cart
+    {
+        return $this->cart;
+    }
 }
