@@ -2,6 +2,7 @@
 
 class Product
 {
+    private int $id;
     private string $name;
     private string $category;
     private float $price;
@@ -13,8 +14,9 @@ class Product
      * @param string $category Product's category
      * @param float $price Product's price
      */
-    public function __construct(string $name, string $category, float $price)
+    public function __construct(int $id, string $name, string $category, float $price)
     {
+        $this->id = $id;
         $this->price = $price;
         $this->name = $name;
         $this->category = $category;
