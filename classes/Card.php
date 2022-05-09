@@ -18,7 +18,7 @@ class Card
      * @param int $year Expire's year
      * @param string $cvc CVC code
      */
-    public function __constructor(string $number, string $owner, int $month, int $year, string $cvc): void
+    public function __construct(string $number, string $owner, int $month, int $year, string $cvc)
     {
         if (strlen($number) != 16 || !is_numeric($number)) {
             throw new TypeError("Card number is not numeric");
