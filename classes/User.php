@@ -7,25 +7,37 @@ abstract class User
 {
     protected string $username;
     protected string $password;
-    protected Card $card;
+    protected ?Card $card;
     protected Cart $cart;
+    protected ?string $billingAddress;
 
     /**
-     * USer constructor
+     * Summary of __construct
      * @param string $username
      * @param string $password
+     * @param string|null $billingAddress
      * @param Card|null $card
      */
-    public function __construct(string $username, string $password, Card $card = null)
+    public function __construct(string $username, string $password, string $billingAddress = null, Card $card = null)
     {
         $this->username = $username;
         $this->password = $password;
+        $this->billingAddress = $billingAddress;
 
         if ($card) {
             $this->card = $card;
         }
 
         $this->cart = new Cart();
+    }
+    
+    /**
+    * Pay for bought products
+    * @return bool
+    */
+    public function pay(): bool
+    {
+        return !$this->card->isExpired();
     }
 
     /**
@@ -54,15 +66,6 @@ abstract class User
     {
         return $this->cart->getTotal();
     }
-
-    /**
-     * Pay for buied products
-     * @return bool
-     */
-    public function pay(): bool
-    {
-        return !$this->card->isExpired();
-    }
     
     /**
      *
@@ -71,5 +74,25 @@ abstract class User
     public function getCart(): Cart
     {
         return $this->cart;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getBillingAddress(): string
+    {
+        return $this->billingAddress;
+    }
+    
+    /**
+     *
+     * @param string $billingAddress
+     * @return User
+     */
+    public function setBillingAddress(string $billingAddress): self
+    {
+        $this->billingAddress = $billingAddress;
+        return $this;
     }
 }

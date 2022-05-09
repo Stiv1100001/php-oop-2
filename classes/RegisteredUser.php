@@ -2,19 +2,23 @@
 
 include_once __DIR__ . "./User.php";
 
+/**
+ * Summary of RegisteredUser
+ */
 class RegisteredUser extends User
 {
     private float $discount = 0.2;
     
     /**
      * Summary of __construct
-     * @param string $username User's username
-     * @param string $password User's password
-     * @param Card $card User's credit card
+     * @param string $username
+     * @param string $password
+     * @param string $billingAddress
+     * @param Card $card
      */
-    public function __construct(string $username, string $password, Card $card)
+    public function __construct(string $username, string $password, string $billingAddress, Card $card)
     {
-        parent::__construct($username, $password, $card);
+        parent::__construct($username, $password, $billingAddress, $card);
     }
 
     /**
