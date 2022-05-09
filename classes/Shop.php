@@ -1,5 +1,8 @@
 <?php
 
+include_once __DIR__ . "./Product.php";
+include_once __DIR__ . "./User.php";
+
 class Shop
 {
     private array $products = [];
@@ -26,7 +29,8 @@ class Shop
         array_push($this->products, $product);
     }
 
-    public function addToUserCart(User $user, Product $product): void {
-      $user->getCart()->addProductToCart($product);
+    public function addToUserCart(User $user, Product $product): void
+    {
+        $user->getCart()->addProductToCart($product);
     }
 }
