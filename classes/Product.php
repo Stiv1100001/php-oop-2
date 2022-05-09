@@ -7,6 +7,12 @@ class Product
     private float $price;
 
 
+    /**
+     * Constructor
+     * @param string $name Product's name
+     * @param string $category Product's category
+     * @param float $price Product's price
+     */
     public function __construct(string $name, string $category, float $price)
     {
         $this->price = $price;

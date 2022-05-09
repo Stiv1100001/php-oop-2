@@ -9,6 +9,11 @@ class Cart
         $this->products = [];
     }
 
+    /**
+     * Add product to cart
+     * @param Product $product
+     * @return void
+     */
     public function addProductToCart(Product $product): void
     {
         array_push($this->products, $product);
@@ -16,14 +21,18 @@ class Cart
 
     
     /**
-     *
-     * @return array
+     *  Get all prducts in cart
+     * @return array of Product
      */
     public function getProducts(): array
     {
         return $this->products;
     }
 
+    /**
+     * Get total price of cart
+     * @return float
+     */
     public function getTotal(): float
     {
         $total = 0.0;

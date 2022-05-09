@@ -10,6 +10,12 @@ abstract class User
     protected Card $card;
     protected Cart $cart;
 
+    /**
+     * USer constructor
+     * @param string $username
+     * @param string $password
+     * @param Card|null $card
+     */
     public function __construct(string $username, string $password, Card $card = null)
     {
         $this->username = $username;
@@ -40,11 +46,19 @@ abstract class User
         return $this->card;
     }
 
+    /**
+     * Get Cart amount
+     * @return float
+     */
     public function getCartTotal(): float
     {
         return $this->cart->getTotal();
     }
 
+    /**
+     * Pay for buied products
+     * @return bool
+     */
     public function pay(): bool
     {
         return !$this->card->isExpired();
