@@ -61,16 +61,7 @@ class Card
     {
         return $this->expireDate;
     }
-
-    /**
-     * Get Card CVC
-     * @return string
-     */
-    public function getCvc(): string
-    {
-        return $this->cvc;
-    }
-
+    
     /**
      * Check if Card is expired
      * @return bool

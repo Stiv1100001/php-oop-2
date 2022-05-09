@@ -29,8 +29,16 @@ class Shop
         array_push($this->products, $product);
     }
 
-    public function addToUserCart(User $user, Product $product): void
+    public function removeProductById($id): void
     {
-        $user->getCart()->addProductToCart($product);
+        $newProducts = [];
+        
+        foreach ($this->products as $product) {
+            if ($product->getId() != $id) {
+                array_push($newProducts, $product);
+            }
+        }
+
+        $this->products = $newProducts;
     }
 }
